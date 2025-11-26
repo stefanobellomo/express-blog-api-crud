@@ -1,13 +1,26 @@
 const posts = require('../data/listPosts')
 
 function index(req, res) {
-    res.json(posts)
+
+    const tags = req.query.tags;
+    console.log(tags);
+
+    let filteredTags = posts
+    console.log(filteredTags);
+
+    if (tags) {
+        filteredTags = posts.filter(post => post.tags.includes(tags))
+        console.log(filteredTags);
+    }
+
+    res.json(filteredTags)
 }
 
 function show(req, res) {
     const id = Number(req.params.id)
     const post = posts.find((post) => (id === post.id))
-    res.json(post)
+
+    res.json(filteredTags)
 }
 
 function store(req, res) {
