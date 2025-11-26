@@ -18,7 +18,7 @@ router.put('/:id', postController.update);
 router.patch('/:id', postController.modify);
 
 // destroy - eliminare un post
-router.delete('/:id', postController.delete);
+router.delete('/:id', postController.destroy);
 
 
 module.exports = router;

@@ -23,7 +23,21 @@ function modify(req, res) {
 }
 
 function destroy(req, res) {
-    res.send(`eliminare il post con id: ${req.params.id}`)
+    const id = Number(req.params.id)
+    const post = posts.find((post) => (id === post.id))
+
+    if (!post) {
+        return res.status(404).json({
+            error: true,
+            message: 'Not found!'
+        })
+    }
+
+    posts.splice(posts.indexOf(post), 1)
+
+    res.sendStatus(204)
+    res.json(post)
+
 }
 
 module.exports = { index, show, store, update, modify, destroy }
