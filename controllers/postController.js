@@ -3,15 +3,13 @@ const posts = require('../data/listPosts')
 function index(req, res) {
 
     const tags = req.query.tags;
-    // console.log(tags);
 
     let filteredTags = posts
-    // console.log(filteredTags);
 
-    // if (tags) {
-    //     filteredTags = posts.filter(post => post.tags.includes(tags))
-    //     console.log(filteredTags);
-    // }
+    if (tags) {
+        filteredTags = posts.filter(post => post.tags.includes(tags))
+        console.log(filteredTags);
+    }
 
     res.json(filteredTags)
 }
