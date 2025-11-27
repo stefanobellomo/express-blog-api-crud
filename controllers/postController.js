@@ -31,14 +31,32 @@ function show(req, res) {
 }
 
 function store(req, res) {
-    res.send('Create new element')
+
+    const postData = req.body
+    const newId = posts[posts.length - 1].id + 1
+
+    const newPost = {
+        id: newId,
+        title: postData.title,
+        content: postData.content,
+        image: postData.image,
+        tags: postData.tags,
+    }
+
+    posts.push(newPost)
+    res.json(newPost)
+
 }
 
 function update(req, res) {
-    res.send(`aggiornare il post con id: ${req.params.id}`)
+
+    // res.send(`aggiornare il post con id: ${req.params.id}`)
 }
 
 function modify(req, res) {
+    const id = Number(req.params.id)
+    const post = posts.find((post) => (id === post.id))
+
     res.send(`aggiornare  qualche elemento del post con id: ${req.params.id}`)
 }
 

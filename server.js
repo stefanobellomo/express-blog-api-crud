@@ -5,6 +5,9 @@ const PORT = 3001
 
 app.use(express.static('public'))
 
+// registriamo il body parser per la conversione dei dati
+app.use(express.json())
+
 app.listen(PORT, () => {
     console.log(`Example app listening on port http://localhost:${PORT}`);
 })
