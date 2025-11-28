@@ -18,7 +18,6 @@ app.listen(PORT, () => {
 
 // entry point
 app.get('/', (req, res) => {
-    stefn.stocazzo()
     res.send('Welcome to my blog')
 })
 
