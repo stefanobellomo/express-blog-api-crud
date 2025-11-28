@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const postsRouter = require('./routers/posts')
 const PORT = 3001
+const notFound = require('./middleware/notFound')
+const errore = require('./middleware/errore')
 
 app.use(express.static('public'))
 
@@ -16,10 +18,14 @@ app.listen(PORT, () => {
 
 // entry point
 app.get('/', (req, res) => {
+    stefn.stocazzo()
     res.send('Welcome to my blog')
 })
 
 app.use('/api/posts', postsRouter)
+
+app.use(errore)
+app.use(notFound)
 
 
 
